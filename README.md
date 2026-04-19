@@ -1,6 +1,6 @@
 ﻿IT Service Desk
 
-![Service Desk Dashboard](wwwroot/images/Ticketsboard.png)
+![Service Desk Dashboard](wwwroot/images/ServiceDesk.png)
 
 This is a ticketing system I built using .NET 10 and SQL Server. I wanted to move away from basic tutorials and build something that actually handles business logic, like user accounts and ticket status changes.
 Core Features
