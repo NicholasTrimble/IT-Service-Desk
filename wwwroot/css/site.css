@@ -1,0 +1,92 @@
+:root {
+    --bg-dark: #0f172a; /* Deep Navy/Slate */
+    --card-bg: #1e293b; /* Lighter Slate for cards */
+    --accent-blue: #38bdf8; /* Sky blue accent */
+    --text-main: #f1f5f9; /* Off-white text */
+    --text-muted: #94a3b8; /* Grey text */
+    --border-color: #334155; /* Subtle borders */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin-bottom: 60px;
+}
+
+/* --- Navigation & Layout --- */
+.navbar {
+    background-color: var(--card-bg) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+}
+
+    .nav-link:hover, .nav-link.active {
+        color: var(--accent-blue) !important;
+    }
+
+/* --- Professional Cards --- */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-main);
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4) !important;
+        border-color: var(--accent-blue);
+    }
+
+/* --- Tables (The Dashboard List) --- */
+.table {
+    color: var(--text-main);
+    border-color: var(--border-color);
+}
+
+    .table thead th {
+        background-color: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-top: none;
+    }
+
+/* --- Inputs & Forms --- */
+.form-control, .form-select {
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    color: white;
+}
+
+    .form-control:focus, .form-select:focus {
+        background-color: #0f172a;
+        color: white;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.2);
+    }
+
+/* --- Badges --- */
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* --- Homepage Image --- */
+.col-lg-6 img {
+    transition: all 0.5s ease;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+    .col-lg-6 img:hover {
+        transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }

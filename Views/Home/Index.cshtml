@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-primary">IT Service Desk</h1>
+            <p class="lead mt-3">
+                A high-performance, secure ticketing system built with <strong>.NET 10</strong> and <strong>Entity Framework Core</strong>.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li><i class="bi bi-check-circle-fill text-success"></i> Role-based Access Control</li>
+                <li><i class="bi bi-check-circle-fill text-success"></i> Real-time Status Tracking</li>
+                <li><i class="bi bi-check-circle-fill text-success"></i> SQL Server Integration</li>
+            </ul>
+            <div class="mt-4">
+                <a asp-controller="Tickets" asp-action="Index" class="btn btn-primary btn-lg px-4 shadow">
+                    Go to Dashboard
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="position-relative">
+                <img src="~/images/Ticketsboard.png"
+                     alt="Ticket Dashboard Preview"
+                     class="img-fluid rounded-3 shadow-lg border border-primary border-opacity-25" />
+        
+                <div class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow">
+                    Live Demo
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

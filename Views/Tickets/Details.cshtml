@@ -1,0 +1,36 @@
+﻿@model IT_Service_Desk.Models.Ticket
+
+<div class="container py-4">
+    <div class="card shadow-lg bg-dark text-white border-secondary">
+        <div class="card-header border-secondary d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">Ticket #@Model.Id: @Model.Title</h2>
+            <span class="badge bg-primary">@Model.Status</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>Description</h5>
+                    <p class="lead">@Model.Description</p>
+                    <hr class="border-secondary" />
+                    <div class="d-flex gap-3">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit Ticket</a>
+                        <form asp-action="Claim" asp-route-id="@Model.Id" method="post">
+                            <button type="submit" class="btn btn-success">Claim Ticket</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 border-start border-secondary">
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Priority:</strong> <span class="badge bg-info">@Model.Priority</span></li>
+                        <li class="mb-2"><strong>Created By:</strong> <span class="text-muted">@Model.CreatedBy</span></li>
+                        <li class="mb-2"><strong>Assigned To:</strong> <span class="text-accent">@Model.AssignedTo</span></li>
+                        <li class="mb-2"><strong>Date:</strong> <span class="text-muted">@Model.CreatedAt.ToShortDateString()</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer border-secondary text-end">
+            <a asp-action="Index" class="text-muted">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
