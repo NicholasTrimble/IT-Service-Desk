@@ -1,6 +1,6 @@
 :root {
-    --bg-dark: #0f172a; /* Deep Navy/Slate */
-    --card-bg: #1e293b; /* Lighter Slate for cards */
+    --bg-dark: #000f; 
+    --card-bg: #010836; /* Darker blue cards*/
     --accent-blue: #38bdf8; /* Sky blue accent */
     --text-main: #f1f5f9; /* Off-white text */
     --text-muted: #94a3b8; /* Grey text */
@@ -90,3 +90,9 @@ body {
         transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
+
+
+.Home-Image {
+    
+
+}
