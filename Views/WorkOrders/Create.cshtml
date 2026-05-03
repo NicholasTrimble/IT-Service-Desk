@@ -1,18 +1,17 @@
-﻿@model IT_Service_Desk.Models.Ticket
+﻿@model IT_Service_Desk.Models.WorkOrder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
+<h1>Create</h1>
 
-<h4>Ticket</h4>
+<h4>WorkOrder</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -26,17 +25,17 @@
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control"
-                        asp-items="Html.GetEnumSelectList<IT_Service_Desk.Models.TicketStatus>()">
+                        asp-items="Html.GetEnumSelectList<IT_Service_Desk.Models.WorkOrderStatus>()">
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Priority" class="control-label"></label>
-                <select asp-for="Priority" class="form-control"
-                        asp-items="Html.GetEnumSelectList<IT_Service_Desk.Models.TicketPriority>()">
+                <label asp-for="Urgency" class="control-label"></label>
+                <select asp-for="Urgency" class="form-control"
+                        asp-items="Html.GetEnumSelectList<IT_Service_Desk.Models.WorkOrderUrgency>()">
                 </select>
-                <span asp-validation-for="Priority" class="text-danger"></span>
+                <span asp-validation-for="Urgency" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedBy" class="control-label"></label>
@@ -54,7 +53,7 @@
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

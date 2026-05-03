@@ -3,5 +3,5 @@
     <File Path=".gitignore" />
   </Folder>
   <Project Path="../ITServiceDesk.Core/ITServiceDesk.Core.csproj" Id="5c8440bf-1714-4f68-99bd-df02d4468212" />
-  <Project Path="IT Service Desk.csproj" />
+  <Project Path="IT_Service_Desk.csproj" />
 </Solution>

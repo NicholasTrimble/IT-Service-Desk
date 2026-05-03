@@ -1,38 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "AssetOperations";
 }
 
 <div class="container mt-5">
-    <div class="row align-items-center">
+    <div class="row align-items-center g-5">
+        @* Left Column: Branding & Value Proposition *@
         <div class="col-lg-6">
-            <h1 class="display-4 fw-bold text-primary">IT Service Desk</h1>
-            <p class="lead mt-3">
-                A high-performance, secure ticketing system built with <strong>.NET 10</strong> and <strong>Entity Framework Core</strong>.
+            <div class="badge bg-primary mb-3">v1.0 Operational</div>
+            <h1 class="display-4 fw-bold text-white">A Asset Management Hub</h1>
+            <p class="lead mt-3 text-secondary">
+                A high-performance operational platform built to track asset lifecycles, maintenance schedules, and team productivity.
             </p>
-            <ul class="list-unstyled mt-4">
-                <li><i class="bi bi-check-circle-fill text-success"></i> Role-based Access Control</li>
-                <li><i class="bi bi-check-circle-fill text-success"></i> Real-time Status Tracking</li>
-                <li><i class="bi bi-check-circle-fill text-success"></i> SQL Server Integration</li>
+            
+            <ul class="list-unstyled mt-4 text-light">
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Asset Lifecycle Management:</strong> Track equipment from deployment to decommission.</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Preventative Scheduling:</strong> Proactive maintenance workflows.</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Data-Driven KPIs:</strong> Real-time operational visibility.</li>
             </ul>
+
             <div class="mt-4">
-                <a asp-controller="Tickets" asp-action="Index" class="btn btn-primary btn-lg px-4 shadow">
+                <a asp-controller="WorkOrders" asp-action="Index" class="btn btn-primary btn-lg px-4 shadow">
                     Go to Dashboard
                 </a>
             </div>
         </div>
+
+        @* Right Column: Visual Component *@
         <div class="col-lg-6">
             <div class="position-relative">
-                <a asp-controller="Tickets" asp-action="Index">
-                    <img src="/images/Ticketsboard.png" class="Home-Image img-fluid" alt="Go to Tickets" style="border:none;" />
+                <a asp-controller="WorkOrders" asp-action="Index" class="text-decoration-none">
+                    <img src="/images/WorkOrdersboard.png" class="img-fluid rounded shadow-lg border border-secondary" alt="Go to WorkOrders" />
+                    
+                    @* The "Live Demo" Badge moved inside the image container to prevent layout breaking *@
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow">
+                        Live Demo
+                    </span>
                 </a>
-            </div>
-        </div>
-
-                     
-        
-                <div class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow">
-                    Live Demo
-                </div>
             </div>
         </div>
     </div>

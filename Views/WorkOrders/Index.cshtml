@@ -1,0 +1,99 @@
+﻿@model IEnumerable<IT_Service_Desk.Models.WorkOrder>
+
+@{
+    ViewData["Title"] = "Facility Maintenance Dashboard";
+}
+
+@* KPI Dashboard Header *@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="text-white fw-bold mb-0">Maintenance Hub</h1>
+        <p class="text-muted small">Real-time operational overview</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary shadow">
+        <i class="bi bi-plus-lg"></i> New WorkOrder
+    </a>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-dark text-white border-secondary shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted text-uppercase small fw-bold">Total</h6>
+                <p class="display-6 mb-0">@Model.Count()</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white border-primary shadow-sm">
+            <div class="card-body">
+                <h6 class="text-primary text-uppercase small fw-bold">Open</h6>
+                <p class="display-6 mb-0">@Model.Count(x => x.Status == IT_Service_Desk.Models.WorkOrderStatus.Open)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white border-success shadow-sm">
+            <div class="card-body">
+                <h6 class="text-success text-uppercase small fw-bold">Closed</h6>
+                <p class="display-6 mb-0">@Model.Count(x => x.Status == IT_Service_Desk.Models.WorkOrderStatus.Closed)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Data Table *@
+<div class="table-responsive bg-dark rounded border border-secondary border-opacity-25 shadow-sm">
+    <table class="table table-dark table-hover align-middle mb-0">
+        <thead class="bg-black bg-opacity-25 text-muted small text-uppercase">
+            <tr>
+                <th class="ps-4">Title</th>
+                <th>Status</th>
+                <th>Urgency</th>
+                <th>Assigned To</th>
+                <th class="text-end pe-4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="ps-4">
+                        <div class="fw-bold text-white">@item.Title</div>
+                        <div class="small text-muted text-truncate" style="max-width: 250px;">@item.Description</div>
+                    </td>
+                    <td>
+                        @{
+                            var statusClass = item.Status switch
+                            {
+                                IT_Service_Desk.Models.WorkOrderStatus.Open => "border-success text-success",
+                                IT_Service_Desk.Models.WorkOrderStatus.InProgress => "border-primary text-primary",
+                                _ => "border-secondary text-secondary"
+                            };
+                        }
+                        <span class="badge border @statusClass">@item.Status</span>
+                    </td>
+                    <td>
+                        @{
+                            var urgencyClass = item.Urgency switch
+                            {
+                                IT_Service_Desk.Models.WorkOrderUrgency.Urgent => "bg-danger",
+                                IT_Service_Desk.Models.WorkOrderUrgency.High => "bg-warning text-dark",
+                                _ => "bg-secondary"
+                            };
+                        }
+                        <span class="badge @urgencyClass">@item.Urgency</span>
+                    </td>
+                    <td>@item.AssignedTo</td>
+                    <td class="text-end pe-4">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">View Details</a>
+                        <form asp-action="Claim" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-success">Claim</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

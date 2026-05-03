@@ -3,10 +3,10 @@
 namespace IT_Service_Desk.Models
 {
     // Define the options for the whole app here
-    public enum TicketStatus { Open, InProgress, Closed }
-    public enum TicketPriority { Low, Medium, High, Urgent }
+    public enum WorkOrderStatus { Open, InProgress, Closed }
+    public enum WorkOrderUrgency { Low, Medium, High, Urgent }
 
-    public class Ticket
+    public class WorkOrder
     {
         public int Id { get; set; } // SQL will handle this (Primary Key)
 
@@ -19,10 +19,10 @@ namespace IT_Service_Desk.Models
 
         // Use the Enums we defined above
         [Required]
-        public TicketStatus Status { get; set; } = TicketStatus.Open;
+        public WorkOrderStatus Status { get; set; } = WorkOrderStatus.Open;
 
         [Required]
-        public TicketPriority Priority { get; set; } = TicketPriority.Medium;
+        public WorkOrderUrgency Urgency { get; set; } = WorkOrderUrgency.Medium;
 
         [Display(Name = "Created By")]
         public string? CreatedBy { get; set; }
@@ -32,5 +32,7 @@ namespace IT_Service_Desk.Models
 
         [Display(Name = "Date Created")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        public List<AuditLog> AuditLogs { get; set; } = new();
     }
 }
