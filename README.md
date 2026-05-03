@@ -1,30 +1,24 @@
-﻿IT Service Desk
+﻿AssetOperations
 
 ![Service Desk Dashboard](wwwroot/images/ServiceDesk.png)
 
-This is a WorkOrdering system I built using .NET 10 and SQL Server. I wanted to move away from basic tutorials and build something that actually handles business logic, like user accounts and WorkOrder status changes.
-Core Features
+I built AssetOperations because most basic ticketing systems are essentially "black holes" for data. You open a ticket, you close it, and the history of that asset is gone. I wanted a platform for facility management that actually keeps track of the lifecycle of an asset, so I built this to solve that.
 
-   Security: I used ASP.NET Core Identity so users have to log in to see or edit WorkOrders.
+The standout feature here is the audit trail. Instead of manually writing logging code into every single controller action—which is messy and easy to forget—I used a database interceptor in Entity Framework. Now, every time a WorkOrder is created or modified, the system automatically captures the change, the timestamp, and the context in an AuditLog table. It’s a "black box" recorder that runs in the background, so the data is always there when management needs it.
 
-   Claim System: I wrote a backend method that lets a logged in tech click a button to claim a WorkOrder. It automatically changes the status to In Progress and assigns it to their account.
+I also moved this project away from "prototype" status by switching from EnsureCreated (which wipes your database on every change) to proper EF Core Migrations. This means the schema is version-controlled and stable. I tied everything together using ASP.NET Core Identity for secure access, and I wrote a custom "Claim" method so technicians can take ownership of tasks with one click, which automatically updates the status and assignee.
 
-   Search and Filter: I used LINQ to make the WorkOrder list searchable by keywords or status.
+For the interface, I wanted a clean, high-contrast look that’s easy on the eyes during a long shift. I modified the default Bootstrap theme into a dark, terminal-inspired style using CSS variables, which keeps the code maintainable and makes it look like a real-world ops tool.
 
-   Custom UI: I modified the standard Bootstrap files to create a dark theme that looks like a modern tech platform.
+The Tech Stack:
 
-Tech Used
+    .NET 10 / ASP.NET Core MVC
 
-   C# and .NET 10
+    Entity Framework Core (Code-First)
 
-   ASP.NET Core MVC
+    SQL Server
 
-   Entity Framework Core
+    Bootstrap 5 (Custom CSS)
 
-   SQL Server
+    ASP.NET Core Identity
 
-   Bootstrap 5
-
-How it works
-
-The app uses the MVC pattern to keep the logic separated. The database is handled through migrations in EF Core. For the UI, I used Razor views and custom CSS to make sure the dashboard was easy to read and worked on different screen sizes.
